@@ -1,90 +1,11 @@
 # Oracle APEX Interactive Grid Cheat Sheet
-This Cheat Sheet is a collection of blog/forum posts related to APEX Grid from version 5.1.*
+This Cheat Sheet is a collection of code snippets and blog posts/ forum entries related to the APEX Interactive Grid.
 
-## Oracle Documentation
-From APEX 18.2 there's Interactive Grid documentation available on https://docs.oracle.com/database/apex-18.2/AEXJS/interactiveGrid.html
+## JS Docs for 18.2
+https://docs.oracle.com/database/apex-18.2/AEXJS/interactiveGrid.html
 
-
-
-
-## Blog Posts
-
-### John Snyders (Oracle APEX dev team)
-
-[Interactive Grid: Under the Hood](http://hardlikesoftware.com/weblog/2016/06/08/interactive-grid-under-the-hood/)
-
-[Interactive Grid column widths](http://hardlikesoftware.com/weblog/2017/01/06/interactive-grid-column-widths/)
-
-[How to hack APEX Interactive Grid Part 1](http://hardlikesoftware.com/weblog/2017/01/18/how-to-hack-apex-interactive-grid-part-1/)
-
-[How to hack APEX Interactive Grid Part 2](http://hardlikesoftware.com/weblog/2017/01/24/how-to-hack-apex-interactive-grid-part-2/)
-
-[How to hack APEX Interactive Grid Part 3](http://hardlikesoftware.com/weblog/2017/02/20/how-to-hack-apex-interactive-grid-part-3/)
-
-[APEX Interactive Grid API Improvements in 5.1.1](http://hardlikesoftware.com/weblog/2017/03/28/apex-interactive-grid-api-improvements-in-5-1-1/)
-
-[How to hack APEX Interactive Grid Part 4](http://hardlikesoftware.com/weblog/2017/03/31/how-to-hack-apex-interactive-grid-part-4/)
-
-[APEX Client-Side Validation](http://hardlikesoftware.com/weblog/2017/05/10/apex-client-side-validation/)
-
-[APEX Interactive Grid Cookbook](http://hardlikesoftware.com/weblog/2017/07/10/apex-interactive-grid-cookbook/)
-
-[Some minor new things in APEX 18.2](http://hardlikesoftware.com/weblog/2018/09/28/some-minor-new-things-in-apex-18-2/)
-
-## Other Links
-[Interactive Grid: Download as PDF with jsPDF by MENNO HOOGENDIJK](https://t.co/RtXQgxbQSg)
-
-[Pimp my Grid App - IG Sample App](https://apex.oracle.com/pls/apex/f?p=pimpmygrid)
-
-[How to Fix Blank Toolbar DIV](https://apexbyg.blogspot.com/2017/12/interactive-grid-how-to-fix-blank.html)
-
-## OTN
-### Hidden and display columns
-[How to set value of a hidden column](https://community.oracle.com/thread/4035826)
-
-[How to set value of a display column](https://community.oracle.com/thread/4047278)
-
-### Processing
-[Process Selected Rows](https://community.oracle.com/message/14204014)
-
-### Disabled Cells
-[Disable Column Actions](https://community.oracle.com/thread/4030370)
-[How to validate disable cell in interactive grid?](https://community.oracle.com/thread/4018344)
-
-### Readonly Cells
-[Making Columns Readonly](http://lschilde.blogspot.hr/2017/03/apex-51-interactive-grid-making-columns.html?m=1)
-
-### Disable Column Resize, Sort, Reorder Columns
-The noHeaderActivate option still allows resize, reordering and sorting columns. In 5.1.1 you can disable those features with the Advanced JavaScript Code the config options are
-config.views.grid.features: resizeColumns, reorderColumns, sort
-
-### Interactive Report vs Interactive Grid
-https://community.oracle.com/thread/4049804
-
-### Horizontal Scroll
-https://community.oracle.com/thread/4050640
-https://community.oracle.com/thread/3812273
-
-### Interactive grid color based on a value
-https://community.oracle.com/thread/4047292
-
-### Grid Selection (copy to clipboard)
-https://community.oracle.com/thread/4051443
-
-### Highlight Row/Cell
-https://community.oracle.com/thread/4036606
-
-### Set Selected Rows After Refresh
-https://community.oracle.com/thread/4060416
-
-### More About Selecting Grid Rows
-https://community.oracle.com/thread/4030402
-
-### Interactive Grid with more than one table
-https://community.oracle.com/message/14473170#14473170
-
-### How to validate IG column values on page load
-https://community.oracle.com/thread/4068205
+## JS Docs for 19.1
+https://apex.oracle.com/pls/apex/apex_pm/r/190019/files/static/v160/jsdoc/index.html
 
 ## How To's
 
@@ -399,7 +320,84 @@ function(config) {
 }
 ```
 
+## Blog Posts
 
+### John Snyders (Oracle APEX dev team)
+
+[Interactive Grid: Under the Hood](http://hardlikesoftware.com/weblog/2016/06/08/interactive-grid-under-the-hood/)
+
+[Interactive Grid column widths](http://hardlikesoftware.com/weblog/2017/01/06/interactive-grid-column-widths/)
+
+[How to hack APEX Interactive Grid Part 1](http://hardlikesoftware.com/weblog/2017/01/18/how-to-hack-apex-interactive-grid-part-1/)
+
+[How to hack APEX Interactive Grid Part 2](http://hardlikesoftware.com/weblog/2017/01/24/how-to-hack-apex-interactive-grid-part-2/)
+
+[How to hack APEX Interactive Grid Part 3](http://hardlikesoftware.com/weblog/2017/02/20/how-to-hack-apex-interactive-grid-part-3/)
+
+[APEX Interactive Grid API Improvements in 5.1.1](http://hardlikesoftware.com/weblog/2017/03/28/apex-interactive-grid-api-improvements-in-5-1-1/)
+
+[How to hack APEX Interactive Grid Part 4](http://hardlikesoftware.com/weblog/2017/03/31/how-to-hack-apex-interactive-grid-part-4/)
+
+[APEX Client-Side Validation](http://hardlikesoftware.com/weblog/2017/05/10/apex-client-side-validation/)
+
+[APEX Interactive Grid Cookbook](http://hardlikesoftware.com/weblog/2017/07/10/apex-interactive-grid-cookbook/)
+
+[Some minor new things in APEX 18.2](http://hardlikesoftware.com/weblog/2018/09/28/some-minor-new-things-in-apex-18-2/)
+
+## Other Links
+[Interactive Grid: Download as PDF with jsPDF by MENNO HOOGENDIJK](https://t.co/RtXQgxbQSg)
+
+[Pimp my Grid App - IG Sample App](https://apex.oracle.com/pls/apex/f?p=pimpmygrid)
+
+[How to Fix Blank Toolbar DIV](https://apexbyg.blogspot.com/2017/12/interactive-grid-how-to-fix-blank.html)
+
+## OTN
+### Hidden and display columns
+[How to set value of a hidden column](https://community.oracle.com/thread/4035826)
+
+[How to set value of a display column](https://community.oracle.com/thread/4047278)
+
+### Processing
+[Process Selected Rows](https://community.oracle.com/message/14204014)
+
+### Disabled Cells
+[Disable Column Actions](https://community.oracle.com/thread/4030370)
+[How to validate disable cell in interactive grid?](https://community.oracle.com/thread/4018344)
+
+### Readonly Cells
+[Making Columns Readonly](http://lschilde.blogspot.hr/2017/03/apex-51-interactive-grid-making-columns.html?m=1)
+
+### Disable Column Resize, Sort, Reorder Columns
+The noHeaderActivate option still allows resize, reordering and sorting columns. In 5.1.1 you can disable those features with the Advanced JavaScript Code the config options are
+config.views.grid.features: resizeColumns, reorderColumns, sort
+
+### Interactive Report vs Interactive Grid
+https://community.oracle.com/thread/4049804
+
+### Horizontal Scroll
+https://community.oracle.com/thread/4050640
+https://community.oracle.com/thread/3812273
+
+### Interactive grid color based on a value
+https://community.oracle.com/thread/4047292
+
+### Grid Selection (copy to clipboard)
+https://community.oracle.com/thread/4051443
+
+### Highlight Row/Cell
+https://community.oracle.com/thread/4036606
+
+### Set Selected Rows After Refresh
+https://community.oracle.com/thread/4060416
+
+### More About Selecting Grid Rows
+https://community.oracle.com/thread/4030402
+
+### Interactive Grid with more than one table
+https://community.oracle.com/message/14473170#14473170
+
+### How to validate IG column values on page load
+https://community.oracle.com/thread/4068205
 
 ## Bugs
 
