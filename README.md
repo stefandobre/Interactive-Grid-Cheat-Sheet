@@ -19,6 +19,11 @@ apex.region('emp').call('refresh')
 apex.region('emp').call('getCurrentView')
 //and so on
 ```
+<details>
+<summary>How do I dropdown?</summary>
+<br>
+This is how you dropdown.
+<details>
 
 ### Get Record
 ``` javascript
