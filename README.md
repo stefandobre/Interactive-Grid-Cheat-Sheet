@@ -1,10 +1,10 @@
 # Oracle APEX Interactive Grid Cheat Sheet
 This Cheat Sheet is a collection of code snippets and blog posts/ forum entries related to the APEX Interactive Grid.
 
-## JS Docs for 18.2
+### JS Docs for 18.2
 https://docs.oracle.com/database/apex-18.2/AEXJS/interactiveGrid.html
 
-## JS Docs for 19.1
+### JS Docs for 19.1
 https://apex.oracle.com/pls/apex/apex_pm/r/190019/files/static/v160/jsdoc/index.html
 
 ## How To's
