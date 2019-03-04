@@ -1,27 +1,16 @@
 # Oracle APEX Interactive Grid Cheat Sheet
 This Cheat Sheet is a collection of code snippets and blog posts/ forum entries related to the APEX Interactive Grid.
 
-### JS Docs for 18.2
+##### JS Docs for 18.2
 https://docs.oracle.com/database/apex-18.2/AEXJS/interactiveGrid.html
 
-### JS Docs for 19.1
+##### JS Docs for 19.1
 https://apex.oracle.com/pls/apex/apex_pm/r/190019/files/static/v160/jsdoc/index.html
 
-## How To's
-
-- [Pagination How To's](ig_pagination.md)
-
-
-## Get Widget
-Before APEX 18.1 you should use:
+### Get Widget
 ``` javascript
-apex.region("emp").widget().interactiveGrid
+apex.region("emp")
 ```
-instead of 
-``` javascript
-apex.region("emp").call
-```
-
 
 ### Get Record
 ``` javascript
@@ -398,6 +387,10 @@ https://community.oracle.com/message/14473170#14473170
 
 ### How to validate IG column values on page load
 https://community.oracle.com/thread/4068205
+
+## How To's
+
+- [Pagination How To's](ig_pagination.md)
 
 ## Bugs
 
