@@ -8,8 +8,16 @@ https://docs.oracle.com/database/apex-18.2/AEXJS/interactiveGrid.html
 https://apex.oracle.com/pls/apex/apex_pm/r/190019/files/static/v160/jsdoc/index.html
 
 ### Get Widget
+this is the base object for all operations
 ``` javascript
-apex.region("emp")
+apex.region('emp')
+```
+### Methods
+calling the methods from the Interactive Grid API
+``` javascript
+apex.region('emp').call('refresh')
+apex.region('emp').call('getCurrentView')
+//and so on
 ```
 
 ### Get Record
