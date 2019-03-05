@@ -19,14 +19,6 @@ apex.region('emp').call('refresh')
 apex.region('emp').call('getCurrentView')
 //and so on
 ```
-<details>
-<summary>List of methods</summary>
-<br>
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
-</details>
 
 ### Get Record
 ``` javascript
@@ -71,6 +63,67 @@ var record      = model.getRecord(vRecordId);
 model.setValue(record,'ENAME', vEname);
 ```
 
+### Initial Grid Configuration
+
+``` javascript
+function(config) {
+
+    if (!config.toolbar) {
+        config.toolbar = {};
+    }
+    
+    config.toolbar.searchField = false; // hide toolbar search field 
+
+    config.toolbar.actionMenu = false; // hide toolbar action menu
+
+    // disable column reorder
+    config.views.grid.features.reorderColumns = false;
+
+    // enable selection persistance across different pages
+    config.views.grid.features.persistSelection = true;
+
+    // hide grid footer
+    config.views.grid.features.footer = false;
+
+    // row selector properties. note that declarative options will override these
+    config.views.grid.features.multiple = true;	// multiple selection
+    config.views.grid.features.selectAll = true; // selectAll button
+
+    //display rownumbers instead of selector
+    config.views.grid.features.rowHeader = 'sequence';
+
+    // turn off auto add row feature
+    config.editable.autoAddRow = false;
+
+    // remove certain actions. see list here
+    config.initActions = function( actions ) {
+        actions.remove("row-duplicate");
+    };
+    
+    // always return the config object
+    return config;
+}
+```
+
+### Initial Grid Column Configuration
+
+``` javascript
+function(config) {
+    // create 'features' object if it does not exist
+    config.features = config.features || {};
+    config.features.sort = false;
+    config.features.aggregate = false;
+
+    config.defaultGridViewOptions = {
+        resizeColumns: false,
+        noHeaderActivate: true //The noHeaderActivate option still allows resize, reordering and sorting of columns.
+    }
+
+    return config;
+}
+```
+
+
 ### Refresh Selected Rows (for Editable IG)
 ``` javascript
 apex.region("emp").call("getActions").invoke("selection-refresh")
@@ -98,58 +151,6 @@ $('.apex-rds').data('onRegionChange', function(mode, activeTab) {
 });
 ```
 
-###  Hide Toolbar Search Bar Field
-``` javascript
-function(config) {
-    if (!config.toolbar) {
-        config.toolbar = {};
-    }
-    config.toolbar.searchField = false;
-    return config;
-}
-```
-
-###  Hide Toolbar Action Menu
-``` javascript
-function(config) {
-    if (!config.toolbar) {
-        config.toolbar = {};
-    }
-    config.toolbar.actionMenu = false;
-    return config;
-}
-```
-
-In 5.1.2.00.09 there's a bug [Bug 26403439](https://support.oracle.com/epmos/faces/BugDisplay?_afrLoop=531782899244749&id=26403439&_afrWindowMode=0&_adf.ctrl-state=p2g8xzuiu_49). Workaround available [here](https://community.oracle.com/thread/4060926).
-
-### Disable Column Reorder
-``` javascript
-function (config){
-  config.views.grid.features.reorderColumns = false;
-  return config;
-}
-```
-or (from 5.1.1):
-```javascript
-function(config) {
-    config.defaultGridViewOptions = {
-        reorderColumns: false
-    }
-    return config;
-}
-```
-
-By using this property you can still reorder columns by using keyboard or Columns dialog (tested in 5.1.2.00.09) - known [Bug 26415403](https://support.oracle.com/epmos/faces/BugDisplay?_afrLoop=53048377940059&id=26415403&_afrWindowMode=0&_adf.ctrl-state=j4iheo2nj_4). Demo is available [here](https://apex.oracle.com/pls/apex/f?p=100309:38).
-
-### Disable Column Resize
-```javascript
-function(config) {
-    config.defaultGridViewOptions = {
-        resizeColumns: false
-    }
-    return config;
-}
-```
 
 ### Actions
 To list actions call:
@@ -202,72 +203,9 @@ $(function() {
 
 Demo is available [here](https://apex.oracle.com/pls/apex/f?p=100309:41) 
 
-### Removing Row Actions
-``` javascript
-function(config) {  
-  config.initActions = function( actions ) {  
-    actions.remove("row-duplicate");  
-  };  
-  return config;  
-}  
-```
-
 To list all action names see Actions paragraph above.
 More on [OTN](https://community.oracle.com/message/14320776#14320776)
 
-### Persistant Row Selection
-``` javascript
-function(config) {  
-    config.defaultGridViewOptions = {  
-        persistSelection: true  
-    };  
-    return config;
-} 
-```
-
-### Auto Add Row
-How to turn off auto add row feature:
-``` javascript
-function(config) {  
-    config.editable.autoAddRow = false;
-    return config;
-} 
-```
-
-### Hide Grid Footer
-``` javascript
-function(config) {  
-    config.defaultGridViewOptions = {  
-        footer: false  
-    };  
-    return config;   
-}  
-```
-
-There are also options for other grid views (defaultIconViewOptions, defaultIconViewOptions, defaultDetailViewOptions).
-
-### Row Selector Properties
-Declarative properties override config properties. To enable config properties, delete Row Selector column.
-Possible properties are multiple and selectAll:
-``` javascript
-function(config) {
-    config.defaultGridViewOptions = {
-        multiple: true,
-        selectAll: true    
-    }
-    return config; 
-}
-```
-
-You can set rowHeader to sequence to display rownumbers instead of selector:
-``` javascript
-function(config) {
-    config.defaultGridViewOptions = {
-        rowHeader: 'sequence'
-    }
-    return config; 
-}
-```
 
 ### Cancel changes and refresh grid
 ``` javascript
@@ -298,32 +236,6 @@ apex.region("regionStaticID").focus();
 * interactivegridsave
 
   Fires after the save event of the IG has finished. Similar to the "afterrefresh" event of an Interactive Report. You can use this as a Custom Event in a Dynamic Action.
-  
-## Column Configuration
-
-### Disable header activation
-From version 5.1.1 it's possible to disable column header menu:
-```javascript
-function(config) {
-    config.defaultGridColumnOptions = {
-        noHeaderActivate: true
-    };  
-    return config;
-}
-```
-
-The noHeaderActivate option still allows resize, reordering and sorting of columns.
-
-Also, it's possible to disable specific feature:
-```javascript
-function(config) {
-    // create 'features' object if it does not exist
-    config.features = config.features || {};
-    config.features.sort = false;
-    config.features.aggregate = false;
-    return config;
-}
-```
 
 ## Blog Posts
 
@@ -407,29 +319,3 @@ https://community.oracle.com/thread/4068205
 ## How To's
 
 - [Pagination How To's](ig_pagination.md)
-
-## Bugs
-
-### 5.1.2.00.09
-
-Bug 26147254 - Duplicated private reports - [Details from OTN](https://community.oracle.com/thread/4047778)
-
-[Bug 26403861](https://support.oracle.com/epmos/faces/BugDisplay?_afrLoop=531233910888612&id=26403861&_afrWindowMode=0&_adf.ctrl-state=p2g8xzuiu_4) - Detail IG region is not refreshed if not visible (in tab) - [Details from OTN](https://community.oracle.com/thread/4034432)
-
-[Bug 26403439](https://support.oracle.com/epmos/faces/BugDisplay?_afrLoop=531782899244749&id=26403439&_afrWindowMode=0&_adf.ctrl-state=p2g8xzuiu_49) - INTERACTIVE GRID SETTING TOOLBAR.SEARCHFIELD = FALSE DOES NOT HIDE SEARCH INPUT - [Details from OTN](https://community.oracle.com/thread/4060926)
-
-[Bug 26415403](https://support.oracle.com/epmos/faces/BugDisplay?_afrLoop=53048377940059&id=26415403&_afrWindowMode=0&_adf.ctrl-state=j4iheo2nj_4) - INTERACTIVE GRID SETTING VIEWS.GRID.FEATURES.REORDERCOLUMNS=FALSE DOES NOT WORK [Details from OTN](https://community.oracle.com/thread/4061833)
-
-### 5.1.1 
-[gotoCell function](https://community.oracle.com/thread/4050038)
-
-[#25974131 Error on Save - no data found for .](https://community.oracle.com/thread/4041014)
-
-[IG Required Pop-up LOV issue](https://community.oracle.com/thread/4052088)
-
-[IG Problems by Peter Raganitsch](https://community.oracle.com/thread/4032141)
-
-[Interactive grid 5.1.1.00.08 issues](https://community.oracle.com/thread/4030751)
-
-### 5.1.4
-[Adding toolbar buttons to more than one IG on page](https://community.oracle.com/thread/4128361)
