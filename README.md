@@ -84,6 +84,9 @@ function(config) {
 
     // hide grid footer
     config.views.grid.features.footer = false;
+    
+    // disable initial selection
+    config.initialSelection = false;
 
     // row selector properties. note that declarative options will override these
     config.views.grid.features.multiple = true;	// multiple selection
